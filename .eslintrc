@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "plugins": [
+    "html",
+    "jest"
+  ],
+  "extends": [
+    "standard"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "rules": {
+    "arrow-parens": 0,
+    "generator-star-spacing": 0,
+    "max-depth": [
+      "error",
+      4
+    ],
+    "max-statements": ["error", 30],
+    "max-params": ["error", 4],
+    "max-nested-callbacks": [
+      "error",
+      3
+    ],
+    "complexity": [
+      "error",
+      {
+        "max": 5
+      }
+    ]
+  }
+}
