@@ -1,28 +1,37 @@
 <template>
   <app-content>
-    Title: <span @click="changeTitle">{{ title }}</span>
+    <ul>
+      <li>
+        Title: <span @click="changeName">{{ user.name }}</span>
+      </li>
 
-    <aa></aa>
-    <bb></bb>
+      <li>
+        Role: <span @click="changeRole">{{ user.role }}</span>
+      </li>
+    </ul>
+
+    <button @click="logName">Action</button>
   </app-content>
 </template>
 
 <script>
-  import Aa from './a'
-  import Bb from './b'
-
   export default {
     name: 'Home',
-    components: {
-      Aa,
-      Bb
-    },
     state: {
-      default: ['title']
+      default: ['user']
+    },
+    actions: {
+      default: ['logUserName']
     },
     methods: {
-      changeTitle () {
-        this.title = 'Another Title'
+      changeName () {
+        this.user.name = 'Marcos Moura'
+      },
+      changeRole () {
+        this.user.role = 'Senior Front End Engineer'
+      },
+      logName () {
+        console.log(this.logUserName())
       }
     }
   }

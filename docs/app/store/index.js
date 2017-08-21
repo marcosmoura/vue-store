@@ -4,11 +4,14 @@ import VueStore from 'vue-store'
 Vue.use(VueStore, {
   default: {
     state: {
-      title: 'Vue Store'
+      user: {
+        name: 'Marcos Vinícius',
+        role: 'Front End Engineer'
+      }
     },
     actions: {
-      setTitle (title) {
-        console.log(title)
+      logUserName ({ user }) {
+        console.log(user.name)
       }
     }
   }

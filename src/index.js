@@ -1,39 +1,16 @@
-const makeReactive = (Vue, store) => {
-  const Store = {}
+import createStore from './createStore'
+import state from './state'
+import actions from './actions'
 
-  Vue.util.defineReactive(Store, 'reactive', store)
+const plugin = (Vue, schema = {}) => {
+  const store = createStore(Vue, schema)
 
-  return Store.reactive
-}
-
-const plugin = (Vue, store = {}) => {
-  const newStore = makeReactive(Vue, store)
-
-  Vue.options.state = {}
-  Vue.options.actions = {}
-  Vue.options.computed = {}
   Vue.mixin({
     beforeCreate () {
-      const state = this.$options.state
-      const modules = Object.keys(state)
+      const vm = this
 
-      if (modules.length) {
-        modules.forEach(module => {
-          const state = newStore[module].state
-          const names = Object.keys(state)
-
-          names.forEach(name => {
-            this.$options.computed[name] = {
-              get () {
-                return makeReactive(Vue, state[name])
-              },
-              set (value) {
-                state[name] = value
-              }
-            }
-          })
-        })
-      }
+      state(vm, store)
+      actions(vm, store)
     }
   })
 }
