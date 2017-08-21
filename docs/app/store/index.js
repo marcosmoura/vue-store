@@ -5,17 +5,26 @@ Vue.use(VueStore, {
   default: {
     state: {
       user: {
-        name: 'Marcos Vinícius',
+        name: '',
+        lastName: '',
         role: 'Front End Engineer'
       }
     },
     actions: {
-      logUserName ({ user }) {
+      setFullName ({ user }) {
         return new Promise(resolve => {
           window.setTimeout(() => {
-            resolve(user.name)
+            user.name = 'Marcos'
+            user.lastName = 'Moura'
+
+            resolve()
           }, 400)
         })
+      }
+    },
+    getters: {
+      fullName ({ user }) {
+        return `${user.name} ${user.lastName}`
       }
     }
   }

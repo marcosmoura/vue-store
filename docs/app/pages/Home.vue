@@ -1,16 +1,20 @@
 <template>
   <app-content>
     <ul>
-      <li>
-        Title: <span @click="changeName">{{ user.name }}</span>
+      <li @click="changeName">
+        Name: {{ user.name }}
       </li>
 
-      <li>
-        Role: <span @click="changeRole">{{ user.role }}</span>
+      <li @click="changeLastName">
+        Full Name: {{ fullName }}
+      </li>
+
+      <li @click="changeRole">
+        Role: {{ user.role }}
       </li>
     </ul>
 
-    <button @click="logName">Action</button>
+    <button @click="setUserName">Action</button>
   </app-content>
 </template>
 
@@ -21,17 +25,23 @@
       default: ['user']
     },
     actions: {
-      default: ['logUserName']
+      default: ['setFullName']
+    },
+    getters: {
+      default: ['fullName']
     },
     methods: {
       changeName () {
-        this.user.name = 'Marcos Moura'
+        this.user.name = 'MM'
+      },
+      changeLastName () {
+        this.user.lastName = 'Moura'
       },
       changeRole () {
         this.user.role = 'Senior Front End Engineer'
       },
-      async logName () {
-        console.log(await this.logUserName())
+      setUserName () {
+        this.setFullName()
       }
     }
   }

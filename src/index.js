@@ -1,5 +1,6 @@
 import createStore from './createStore'
 import state from './state'
+import getters from './getters'
 import actions from './actions'
 
 const plugin = (Vue, schema = {}) => {
@@ -10,6 +11,7 @@ const plugin = (Vue, schema = {}) => {
       const vm = this
 
       state(vm, store)
+      getters(vm, store)
       actions(vm, store)
     }
   })
