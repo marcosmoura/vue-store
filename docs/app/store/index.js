@@ -11,7 +11,11 @@ Vue.use(VueStore, {
     },
     actions: {
       logUserName ({ user }) {
-        console.log(user.name)
+        return new Promise(resolve => {
+          window.setTimeout(() => {
+            resolve(user.name)
+          }, 400)
+        })
       }
     }
   }

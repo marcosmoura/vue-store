@@ -30,8 +30,8 @@
       changeRole () {
         this.user.role = 'Senior Front End Engineer'
       },
-      logName () {
-        console.log(this.logUserName())
+      async logName () {
+        console.log(await this.logUserName())
       }
     }
   }

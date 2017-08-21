@@ -1,4 +1,5 @@
 /* Third Party */
+import 'regenerator-runtime/runtime'
 import Vue from 'vue'
 
 /* App */

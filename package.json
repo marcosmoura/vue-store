@@ -37,6 +37,7 @@
     "node": ">= 7.0"
   },
   "dependencies": {
+    "is-promise": "^2.1.0",
     "vue": "^2.4.2"
   },
   "devDependencies": {

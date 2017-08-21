@@ -1,3 +1,5 @@
+import isPromise from 'is-promise'
+
 const actions = (vm, store) => {
   const vmActions = vm.$options.actions
   const modules = Object.keys(vmActions)
@@ -12,7 +14,7 @@ const actions = (vm, store) => {
         vm[name] = () => {
           const action = actions[name].bind(null, state)()
 
-          if (action) {
+          if (isPromise(action)) {
             return action
           }
 
